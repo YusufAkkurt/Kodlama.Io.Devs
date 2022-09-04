@@ -17,7 +17,14 @@ public class EfRepositoryBase<TEntity, TContext> : IRepository<TEntity> where TE
 
     public IQueryable<TEntity> Query() => _context.Set<TEntity>();
 
-    public TEntity Get(Expression<Func<TEntity, bool>> predicate) => this.Query().FirstOrDefault(predicate);
+    public TEntity Get(Expression<Func<TEntity, bool>> predicate, bool enableTracking = true)
+    {
+        var query = this.Query();
+
+        if (!enableTracking) query = query.AsNoTracking();
+
+        return query.FirstOrDefault(predicate);
+    }
 
     public IPaginate<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy, Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include, int index = 0, int size = 10, bool enableTracking = true)
     {

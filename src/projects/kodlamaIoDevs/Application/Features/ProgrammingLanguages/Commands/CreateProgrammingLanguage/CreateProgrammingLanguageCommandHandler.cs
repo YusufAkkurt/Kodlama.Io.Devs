@@ -22,7 +22,7 @@ public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreatePro
 
     public async Task<ProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
     {
-        await _programmingLanguageBusinessRule.ProgrammingLanguageCanNotBeDuplicatedWhenAdded(request.Name);
+        await _programmingLanguageBusinessRule.ProgrammingLanguageCanNotBeDuplicatedWhenAddedAsync(request.Name);
 
         var mappedProgrammingLanguage = _mapper.Map<ProgrammingLanguage>(request);
 

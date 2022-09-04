@@ -9,5 +9,6 @@ public class ProgrammingLanguageConfiguration : IEntityTypeConfiguration<Program
     {
         builder.HasKey(prop => prop.Id);
         builder.Property(prop => prop.Name).IsRequired(true);
+        builder.HasQueryFilter(entity => !entity.IsDeleted);
     }
 }
