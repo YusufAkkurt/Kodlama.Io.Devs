@@ -8,7 +8,9 @@ public class ProgrammingLanguageConfiguration : IEntityTypeConfiguration<Program
     public void Configure(EntityTypeBuilder<ProgrammingLanguage> builder)
     {
         builder.HasKey(prop => prop.Id);
-        builder.Property(prop => prop.Name).IsRequired(true);
+
         builder.HasQueryFilter(entity => !entity.IsDeleted);
+
+        builder.HasMany(prop => prop.Technologies).WithOne(prop => prop.ProgrammingLanguage);
     }
 }

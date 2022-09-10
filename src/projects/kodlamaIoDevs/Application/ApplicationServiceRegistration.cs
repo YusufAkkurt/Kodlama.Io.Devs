@@ -1,4 +1,5 @@
 ﻿using Application.Features.ProgrammingLanguages.Rules;
+using Application.Features.Technologies.Rules;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -13,6 +14,7 @@ public static class ApplicationServiceRegistration
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services.AddScoped<ProgrammingLanguageBusinessRule>();
+        services.AddScoped<TechnologyBusinessRule>();
 
         return services;
     }

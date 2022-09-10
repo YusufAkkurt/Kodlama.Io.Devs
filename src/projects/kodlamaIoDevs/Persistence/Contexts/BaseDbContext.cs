@@ -8,6 +8,7 @@ namespace Persistence.Contexts;
 public class BaseDbContext : DbContext
 {
     public DbSet<ProgrammingLanguage> ProgrammingLanguages { get; set; }
+    public DbSet<Technology> Technologies { get; set; }
 
     private readonly IConfiguration _configuration;
 

@@ -1,9 +1,7 @@
 ﻿using Application.Features.ProgrammingLanguages.Dtos;
 using Application.Features.ProgrammingLanguages.Rules;
 using Application.Services.Repositories;
-using AutoMapper;
 using Domain.Entities;
-using MediatR;
 
 namespace Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage;
 
@@ -22,7 +20,7 @@ public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreatePro
 
     public async Task<ProgrammingLanguageDto> Handle(CreateProgrammingLanguageCommand request, CancellationToken cancellationToken)
     {
-        await _programmingLanguageBusinessRule.ProgrammingLanguageCanNotBeDuplicatedWhenAddedAsync(request.Name);
+        await _programmingLanguageBusinessRule.ProgrammingLanguageCanNotBeDuplicatedWhenSavedAsync(request.Name);
 
         var mappedProgrammingLanguage = _mapper.Map<ProgrammingLanguage>(request);
 

@@ -14,20 +14,14 @@ public class ProgrammingLanguageBusinessRule
         _programmingLanguageRepository = programmingLanguageRepository;
     }
 
-    public async Task ProgrammingLanguageCanNotBeDuplicatedWhenAddedAsync(string name, bool enableTracking = true)
+    public async Task ProgrammingLanguageCanNotBeDuplicatedWhenSavedAsync(string name)
     {
-        var programmingLanguage = await _programmingLanguageRepository.GetAsync(row => row.Name.Contains(name), enableTracking);
+        var programmingLanguage = await _programmingLanguageRepository.GetAsync(row => row.Name.Equals(name));
         if (programmingLanguage is not null) throw new BusinessException(Messages.Join(Messages.ProgrammingLanguage, Messages.AlreadyExists));
-    }
-
-    public async Task ProgrammingLanguageIsExistsFromIdAsync(int id, bool enableTracking = true)
-    {
-        var programmingLanguage = await _programmingLanguageRepository.GetAsync(row => row.Id.Equals(id), enableTracking);
-        if (programmingLanguage is null) throw new BusinessException(Messages.Join(Messages.ProgrammingLanguage, Messages.NotFound));
     }
 
     public void ProgrammingLanguageExistsWhenRequested(ProgrammingLanguage? programmingLanguage)
     {
-        if (programmingLanguage == null) throw new BusinessException(Messages.Join(Messages.ProgrammingLanguage, Messages.NotExists));
+        if (programmingLanguage is null) throw new BusinessException(Messages.Join(Messages.ProgrammingLanguage, Messages.NotExists));
     }
 }

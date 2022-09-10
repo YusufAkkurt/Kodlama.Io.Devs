@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Features.ProgrammingLanguages.Commands.DeleteProgrammingLanguage;
 
-public class DeleteProgrammingLanguage : IRequest<ProgrammingLanguageDto>
+public class DeleteProgrammingLanguageCommand : IRequest<ProgrammingLanguageDto>
 {
     public int Id { get; set; }
 }

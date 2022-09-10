@@ -1,7 +1,5 @@
 ﻿using Application.Features.ProgrammingLanguages.Models;
 using Application.Services.Repositories;
-using AutoMapper;
-using MediatR;
 
 namespace Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
 

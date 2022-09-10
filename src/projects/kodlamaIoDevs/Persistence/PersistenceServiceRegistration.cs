@@ -14,6 +14,7 @@ public static class PersistenceServiceRegistration
 
         #region Repositories DI
         services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
+        services.AddScoped<ITechnologyRepository, TechnologyRepository>();
         #endregion
 
         return services;
